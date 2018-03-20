@@ -1,6 +1,5 @@
 import turtle as t
 
-
 t.speed(1000)
 t.ht()
 t.color('white')
@@ -33,7 +32,6 @@ t.fd(250)
 t.ht()
 
 def f(degree):
-    
     t.pensize(5)
     t.color('white')
     t.back(250)
