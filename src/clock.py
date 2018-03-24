@@ -1,45 +1,38 @@
 import turtle as t
-
 t.speed(1000)
-t.ht()
-t.color('white')
-t.sety(-300)
-t.color('black')
-t.circle(300)
-t.color('white')
-t.sety(300)
-t.color('black')
 t.pensize(3)
-t.sety(300-20)
-t.color('white')
-t.goto(300,0)
-t.color('black')
-t.setx(300-20)
-t.color('white')
-t.goto(0,-300)
-t.color('black')
-t.sety(-300+20)
-t.color('white')
-t.goto(-300,0)
-t.color('black')
-t.setx(-300+20)
-t.color('white')
-t.goto(0,0)
-t.color('black')
 b = 90
 t.seth(b)
 t.fd(250)
 t.ht()
 
 def f(degree):
-    t.pensize(5)
-    t.color('white')
-    t.back(250)
     t.pensize(3)
     t.color('black')
     t.seth(degree)
     t.fd(250)
+    t.clear()
+    t.reset()
 
-for x in range(1,60):
+def drawMinute(degree):
+    newMinute = t.Turtle()
+    newMinute.ht()
+    newMinute.speed(1000)
+    newMinute.color('black')
+    newMinute.seth(b - degree)
+    newMinute.fd(200)
+    newMinute.back(200)
+    return newMinute
 
-    t.ontimer(f(90 - x * 6), 1000)
+y = 0
+newMinute = None
+for x in range(0,1000):
+    if x % 10 == 0:
+        if newMinute != None:
+            newMinute.clear()
+            newMinute.reset()
+        newMinute = drawMinute(6 * y)
+        y = y + 1
+
+
+    t.ontimer(f(90 - x * 6), 10)
