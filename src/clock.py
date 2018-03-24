@@ -13,24 +13,25 @@ cir.sety(-300)
 cir.color('black')
 cir.circle(300)
 cir.color('white')
-cir.sety(300)
-cir.color('black')
-cir.pensize(3)
-cir.sety(300 - 20)
-cir.color('white')
-cir.goto(300, 0)
-cir.color('black')
-cir.setx(300 - 20)
-cir.color('white')
-cir.goto(0, -300)
-cir.color('black')
-cir.sety(-300 + 20)
-cir.color('white')
-cir.goto(-300, 0)
-cir.color('black')
-cir.setx(-300 + 20)
-cir.color('white')
-cir.goto(0, 0)
+
+
+def drawline(pikachu, pichu):
+    cir.goto(0, 0)
+    cir.seth(b - pikachu)
+    cir.fd(300)
+    cir.color('black')
+    cir.back(pichu)
+    cir.color('white')
+
+
+for h in range(1, 61):
+    if h % 5 == 0:
+        cir.pensize(5)
+        drawline(h * 6, 40)
+
+    else:
+        cir.pensize(3)
+        drawline(h * 6, 20)
 
 
 def f(degree):
