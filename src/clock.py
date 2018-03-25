@@ -1,10 +1,12 @@
 import turtle as t
+import time
 
 t.speed(1000)
 t.pensize(1)
 b = 90
 t.seth(b)
 t.ht()
+
 cir = t.Turtle()
 cir.speed(1000)
 cir.ht()
@@ -69,23 +71,33 @@ def drawhour(pikachu):
     return hour
 
 
+c = 1000
+a = 100
 y = 0
 k = 0
+
 hour = None
 newMinute = None
 while True:
     for x in range(0, 3600):
-        if x % 60 == 0:
+        chu = time.gmtime(time.time())
+
+        if chu.tm_sec <= c:
+            c = 0
+
             if newMinute != None:
                 newMinute.clear()
                 newMinute.reset()
-            newMinute = drawMinute(6 * y)
+            newMinute = drawMinute(6 * chu.tm_min)
+
             y = y + 1
-            if x % 3599 == 0:
+            if chu.tm_min <= a:
+                chu = time.gmtime(time.time())
+                a = 0
                 if hour != None:
                     hour.clear()
                     hour.reset()
-                hour = drawhour(30 * k)
+                hour = drawhour(30 * (chu.tm_hour + 9))
                 k = k + 1
 
-        t.ontimer(f(90 - x * 6), 1000)
+        t.ontimer(f(90 - chu.tm_sec * 6), 800)
