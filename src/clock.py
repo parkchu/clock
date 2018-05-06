@@ -101,3 +101,4 @@ while True:
                 k = k + 1
 
         t.ontimer(f(90 - chu.tm_sec * 6), 800)
+
